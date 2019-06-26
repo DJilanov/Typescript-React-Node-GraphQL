@@ -35,6 +35,7 @@ const ContactsTable = (props: TableProps) => {
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Edit</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -51,6 +52,9 @@ const ContactsTable = (props: TableProps) => {
               </TableCell>
               <TableCell component="th" scope="row">
                 <Link to={`/contacts/edit/${contact.id}`}>Edit</Link>
+              </TableCell>
+              <TableCell component="th" scope="row" onClick={() => props.deleteUser(contact.id)}>
+                Delete
               </TableCell>
             </TableRow>
           ))}

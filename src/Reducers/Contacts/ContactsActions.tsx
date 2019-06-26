@@ -66,7 +66,7 @@ export const editContact = (contact: any) => {
   }
 }
 
-export const deleteContact = (id: any, deleted: any) => {
+export const deleteContact = (id: any) => {
   return (dispatch: any) => {
     dispatch({
       type: ContactsTypes.deleteContacts
@@ -78,8 +78,7 @@ export const deleteContact = (id: any, deleted: any) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        _id: id,
-        deleted: !deleted
+        _id: id
       })
     })
       .then(response => response.json())

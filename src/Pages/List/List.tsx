@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 import ListProps from '../../Models/ListProps'
 
-import { fetchContacts } from '../../Reducers/Contacts/ContactsActions'
+import { fetchContacts, deleteContact } from '../../Reducers/Contacts/ContactsActions'
 import ContactsTable from '../../Components/ContactsTable/ContactsTable'
 
 
@@ -14,6 +14,11 @@ class List extends React.Component<ListProps> {
   componentDidMount() {
     let { fetchContacts } = this.props;
     fetchContacts()
+  }
+
+  deleteUser = (id: string) => {
+    // TODO: Show dialog and on approve fire that
+    deleteContact(id)
   }
 
   render() {
@@ -24,7 +29,7 @@ class List extends React.Component<ListProps> {
           <Link to={`/contacts/create/`}>Add Contact</Link>
         </Button>
       </div>,
-      <ContactsTable contacts={contacts} classes={classes}></ContactsTable>
+      <ContactsTable contacts={contacts} deleteUser={this.deleteUser} classes={classes}></ContactsTable>
     ]
   }
 }
