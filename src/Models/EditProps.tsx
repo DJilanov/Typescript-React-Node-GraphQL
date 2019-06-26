@@ -3,5 +3,8 @@ import Contacts from './Contacts'
 export default interface EditProps {
     classes: any,
     match: any,
-    conctact: Contacts
+    fetchContacts: Function,
+    editContact: Function,
+    history: any,
+    contact: Contacts
 }

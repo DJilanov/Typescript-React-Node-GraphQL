@@ -10,25 +10,41 @@ import { addContact } from '../../Reducers/Contacts/ContactsActions'
 import CreateProps from '../../Models/CreateProps'
 import Contacts from '../../Models/Contacts'
 
-class Create extends React.Component<CreateProps> {
+class Create extends React.Component<CreateProps, any> {
+  state = {
+    name: '',
+    email: ''
+  }
 
-  handleSubmit = (form: FormEvent) => {
-    debugger;
+  handleChange = (value: string, arg: string) => {
+    let state: any = {}
+    state[arg] = value;
+    this.setState(state)
+  }
+
+  handleSubmit = () => {
+    this.props.addContact(this.state)
+    this.props.history.push('/contacts/')
   }
 
   render() {
+    const { name, email } = this.state
     return (
       <div>
         <h3>Create customer</h3>
         <form onSubmit={this.handleSubmit}>
-          {/* <FormControl>
-            <InputLabel htmlFor="email">Email address</InputLabel> */}
-            <Input id="email" name="email" />
-          {/* </FormControl>
           <FormControl>
-            <InputLabel htmlFor="name">Name</InputLabel> */}
-            <Input id="name" name="name" />
-          {/* </FormControl> */}
+            <InputLabel htmlFor="email">Email address</InputLabel>
+            <Input id="email" name="email" value={email} onChange={(event) => {
+              this.handleChange(event.target.value, 'email')
+            }}/>
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="name">Name</InputLabel>
+            <Input id="name" name="name" value={name} onChange={(event) => {
+              this.handleChange(event.target.value, 'name')
+            }}/>
+          </FormControl>
           <Button type="submit">Submit</Button>
         </form>
       </div>

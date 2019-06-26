@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
+    link: {
+      color: 'inherit',
+      textDecoration: 'inherit'
+    },
     title: {
       flexGrow: 1,
       color: 'white!important'
@@ -26,7 +30,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Contacts Application
+            <a href="/" className={classes.link}>Contacts Application</a>
           </Typography>
         </Toolbar>
       </AppBar>
