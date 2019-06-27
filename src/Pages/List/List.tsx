@@ -41,7 +41,7 @@ const mapStateToProps = (state: any) => {
   };
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   fetchContacts: () => dispatch(fetchContacts()),
   deleteContact: (id: string) => dispatch(deleteContact(id)),
 })

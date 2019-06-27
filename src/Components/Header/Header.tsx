@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Header() {
-  const classes: any = useStyles();
+  const classes: Object = useStyles();
 
   return (
     <div className={classes.root}>

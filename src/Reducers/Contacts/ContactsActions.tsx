@@ -1,10 +1,11 @@
 /* global fetch:false */
 import ContactsTypes from './ContactsTypes'
 import { config } from '../../Config/config'
+import Contacts from '../../Models/Contacts'
 const apiUrl = config.API_URL
 
 export const fetchContacts = () => {
-  return (dispatch: any) => {
+  return (dispatch: Function) => {
     dispatch({
       method: 'GET',
       type: ContactsTypes.fetchContacts
@@ -15,12 +16,12 @@ export const fetchContacts = () => {
   }
 }
 
-export const setContacts = (contacts: any) => ({
+export const setContacts = (contacts: Function) => ({
   type: ContactsTypes.setContacts,
   contacts: contacts
 })
 
-export const createContact = (contact: any) => {
+export const createContact = (contact: Function) => {
   let query = `mutation addContact($contact: InputContact) {
     addContact(contact: $contact) {
       id,
@@ -28,7 +29,7 @@ export const createContact = (contact: any) => {
       email
     }
   }`;
-  return (dispatch: any) => {
+  return (dispatch: Function) => {
     dispatch({
       type: ContactsTypes.createContacts
     })
@@ -52,12 +53,12 @@ export const createContact = (contact: any) => {
   }
 }
 
-export const addContact = (contact: any) => ({
+export const addContact = (contact: Contacts) => ({
   type: ContactsTypes.addContacts,
   contact
 })
 
-export const editContact = (contact: any) => {
+export const editContact = (contact: Contacts) => {
   let query = `mutation updateContact($contact: InputContact) {
     updateContact(contact: $contact) {
       id,
@@ -65,7 +66,7 @@ export const editContact = (contact: any) => {
       email
     }
   }`;
-  return (dispatch: any) => {
+  return (dispatch: Function) => {
     dispatch({
       type: ContactsTypes.editContacts
     })
@@ -91,7 +92,7 @@ export const deleteContact = (id: string) => {
   let query = `mutation deleteContact($id: ID) {
     deleteContact(id: $id)
   }`;
-  return (dispatch: any) => {
+  return (dispatch: Function) => {
     dispatch({
       type: ContactsTypes.deleteContacts
     })
@@ -113,7 +114,7 @@ export const deleteContact = (id: string) => {
   }
 }
 
-export const updateContact = (contact: any) => ({
+export const updateContact = (contact: Contacts) => ({
   type: ContactsTypes.updateContacts,
   contact
 })

@@ -52,7 +52,7 @@ class Create extends React.Component<CreateProps, any> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   createContact: (contact: Contacts) => dispatch(createContact(contact)),
 })
 

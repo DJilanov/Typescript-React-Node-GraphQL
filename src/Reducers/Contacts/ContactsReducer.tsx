@@ -1,4 +1,5 @@
 import ContactsTypes from './ContactsTypes'
+import Contacts from '../../Models/Contacts'
 
 const contacts = (state = [], action: any) => {
     switch (action.type) {
@@ -6,8 +7,7 @@ const contacts = (state = [], action: any) => {
         //   TODO: Add loader or something
         return state
       case ContactsTypes.setContacts:
-        return action.contacts.map((contact: any) => {
-          contact.editMode = false
+        return action.contacts.map((contact: Contacts) => {
           return contact
         });
       case ContactsTypes.addContacts:
@@ -20,13 +20,13 @@ const contacts = (state = [], action: any) => {
           }
         ]
       case ContactsTypes.updateContacts:
-        return state.map((contact: any) =>
+        return state.map((contact: Contacts) =>
           (contact.id === action.contact.id)
             ? { ...action.contact }
             : contact
         )
       case ContactsTypes.deleteContacts:
-        return state.map((contact: any) =>
+        return state.map((contact: Contacts) =>
           (contact.id === action.id)
             ? { ...action.contact }
             : contact

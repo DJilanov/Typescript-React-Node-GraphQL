@@ -77,7 +77,7 @@ const mapStateToProps = (state: any, props: EditProps) => {
   };
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   fetchContacts: () => dispatch(fetchContacts()),
   editContact: (contact: Contacts) => dispatch(editContact(contact))
 })

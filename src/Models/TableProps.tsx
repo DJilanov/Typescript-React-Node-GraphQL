@@ -1,7 +1,7 @@
 import Contacts from './Contacts'
 
 export default interface TableProps {
-    classes: any,
-    deleteUser: any,
+    classes: Object,
+    deleteUser: Function,
     contacts: Contacts[]
 }
