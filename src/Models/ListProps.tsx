@@ -1,7 +1,8 @@
 import Contacts from './Contacts'
 
 export default interface ListProps {
-    fetchContacts: Function;
+    fetchContacts: Function,
+    deleteContact: Function,
     classes: any,
     contacts: Contacts[]
 }

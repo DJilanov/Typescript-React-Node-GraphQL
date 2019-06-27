@@ -17,6 +17,7 @@ class List extends React.Component<ListProps> {
   }
 
   deleteUser = (id: string) => {
+    let { deleteContact } = this.props;
     // TODO: Show dialog and on approve fire that
     deleteContact(id)
   }
@@ -42,6 +43,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchContacts: () => dispatch(fetchContacts()),
+  deleteContact: (id: string) => dispatch(deleteContact(id)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(

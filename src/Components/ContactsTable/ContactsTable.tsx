@@ -54,7 +54,7 @@ const ContactsTable = (props: TableProps) => {
                 <Link to={`/contacts/edit/${contact.id}`}>Edit</Link>
               </TableCell>
               <TableCell component="th" scope="row" onClick={() => props.deleteUser(contact.id)}>
-                Delete
+                <Button>Delete</Button>
               </TableCell>
             </TableRow>
           ))}
