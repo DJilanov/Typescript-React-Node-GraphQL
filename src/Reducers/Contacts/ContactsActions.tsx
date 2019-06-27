@@ -47,7 +47,7 @@ export const createContact = (contact: any) => {
     })
       .then(response => response.json())
       .then(json => {
-        dispatch(addContact(json))
+        dispatch(addContact(json.data.addContact))
       })
   }
 }
