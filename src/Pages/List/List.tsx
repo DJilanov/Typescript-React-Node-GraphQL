@@ -25,9 +25,9 @@ class List extends React.Component<ListProps> {
     let { classes, contacts } = this.props;
     return [
       <div className={classes.containerMargin}>
-        <Button variant="outlined" color="primary" className={classes.addButton}>
-          <Link to={`/contacts/create/`}>Add Contact</Link>
-        </Button>
+        <Link to={`/contacts/create/`}>
+          <Button variant="outlined" color="primary" className={classes.addButton}>Add Contact</Button>
+        </Link>
       </div>,
       <ContactsTable contacts={contacts} deleteUser={this.deleteUser} classes={classes}></ContactsTable>
     ]
