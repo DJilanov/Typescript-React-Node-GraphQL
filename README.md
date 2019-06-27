@@ -47,3 +47,12 @@ Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 Launches the test runner in the interactive watch mode.
 
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### TODO
+1. Add loaders when fetching data
+2. Cover all Requests with the GraphQL
+3. Connect DB to the GraphQL
+4. Implement better design
+5. Cover all any's with models
+6. Use Xstate
+7. Add loading and collection properties to the state and migrate it to Object from the Array
