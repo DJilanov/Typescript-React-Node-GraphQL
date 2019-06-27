@@ -83,17 +83,13 @@ export const editContact = (contact: any) => {
       })
     })
       .then(response => response.json())
-      .then(json => dispatch(updateContact(json)))
+      .then(() => dispatch(fetchContacts()))
   }
 }
 
 export const deleteContact = (id: string) => {
-  let query = `mutation deleteContact($id: String) {
-    deleteContact(id: $id) {
-      id,
-      name,
-      email
-    }
+  let query = `mutation deleteContact($id: ID) {
+    deleteContact(id: $id)
   }`;
   return (dispatch: any) => {
     dispatch({
