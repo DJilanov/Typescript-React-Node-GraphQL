@@ -35,13 +35,13 @@ class Create extends React.Component<CreateProps, any> {
         <form onSubmit={this.handleSubmit}>
           <FormControl>
             <InputLabel htmlFor="email">Email address</InputLabel>
-            <Input id="email" name="email" value={email} onChange={(event) => {
+            <Input id="email" name="email" type="email" value={email} onChange={(event) => {
               this.handleChange(event.target.value, 'email')
             }}/>
           </FormControl>
           <FormControl>
             <InputLabel htmlFor="name">Name</InputLabel>
-            <Input id="name" name="name" value={name} onChange={(event) => {
+            <Input id="name" name="name" type="text" value={name} onChange={(event) => {
               this.handleChange(event.target.value, 'name')
             }}/>
           </FormControl>
