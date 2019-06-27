@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
-import { addContact } from '../../Reducers/Contacts/ContactsActions'
+import { createContact } from '../../Reducers/Contacts/ContactsActions'
 
 import CreateProps from '../../Models/CreateProps'
 import Contacts from '../../Models/Contacts'
@@ -23,7 +23,7 @@ class Create extends React.Component<CreateProps, any> {
   }
 
   handleSubmit = () => {
-    this.props.addContact(this.state)
+    this.props.createContact(this.state)
     this.props.history.push('/contacts/')
   }
 
@@ -53,7 +53,7 @@ class Create extends React.Component<CreateProps, any> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  addContact: (contact: Contacts) => dispatch(addContact(contact)),
+  createContact: (contact: Contacts) => dispatch(createContact(contact)),
 })
 
 export default connect(null, mapDispatchToProps)(Create);

@@ -21,19 +21,28 @@ export const setContacts = (contacts: any) => ({
 })
 
 export const createContact = (contact: any) => {
+  let query = `mutation addContact($contact: InputContact) {
+    addContact(contact: $contact) {
+      id,
+      name,
+      email
+    }
+  }`;
   return (dispatch: any) => {
     dispatch({
       type: ContactsTypes.createContacts
     })
-    return fetch(apiUrl + 'contact', {
+    return fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        text: contact,
-        deleted: false
+        query: query,
+        variables: {
+          contact: contact
+        }
       })
     })
       .then(response => response.json())

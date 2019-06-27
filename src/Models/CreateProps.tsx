@@ -1,5 +1,5 @@
 export default interface CreateProps {
     classes: any,
-    addContact: Function,
+    createContact: Function,
     history: any
 }

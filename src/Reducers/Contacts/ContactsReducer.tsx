@@ -14,7 +14,7 @@ const contacts = (state = [], action: any) => {
         return [
           ...state,
           {
-            _id: action.contact._id,
+            id: action.contact.id,
             text: action.contact.text,
             deleted: action.contact.deleted,
             editMode: false
@@ -22,13 +22,13 @@ const contacts = (state = [], action: any) => {
         ]
       case ContactsTypes.updateContacts:
         return state.map((contact: any) =>
-          (contact._id === action.contact._id)
+          (contact.id === action.contact.id)
             ? { ...action.contact, editMode: false }
             : contact
         )
       case ContactsTypes.deleteContacts:
         return state.map((contact: any) =>
-          (contact._id === action._id)
+          (contact.id === action.id)
             ? { ...action.contact, editMode: false }
             : contact
         )
