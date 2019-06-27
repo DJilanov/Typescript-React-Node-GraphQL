@@ -55,3 +55,5 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 4. Cover all any's with models
 5. Use Xstate
 6. Add loading and collection properties to the state and migrate it to Object from the Array
+7. Add shapes to all Objects props
+8. Write tests
