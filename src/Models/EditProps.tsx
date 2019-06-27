@@ -1,10 +1,10 @@
 import Contacts from './Contacts'
 
 export default interface EditProps {
-    classes: Object,
-    match: Object,
+    classes: any,
+    match: any,
     fetchContacts: Function,
     editContact: Function,
-    history: Object,
+    history: any,
     contact: Contacts
 }

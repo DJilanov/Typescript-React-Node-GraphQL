@@ -53,7 +53,7 @@ class Create extends React.Component<CreateProps, any> {
 }
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  createContact: (contact: Contacts) => dispatch(createContact(contact)),
+  createContact: (contact: Contacts) => dispatch(createContact(contact as any)),
 })
 
 export default connect(null, mapDispatchToProps)(Create);
