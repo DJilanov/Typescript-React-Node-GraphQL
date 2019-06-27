@@ -58,36 +58,58 @@ export const addContact = (contact: any) => ({
 })
 
 export const editContact = (contact: any) => {
+  let query = `mutation updateContact($contact: InputContact) {
+    updateContact(contact: $contact) {
+      id,
+      name,
+      email
+    }
+  }`;
   return (dispatch: any) => {
     dispatch({
       type: ContactsTypes.editContacts
     })
-    return fetch(apiUrl + 'contact', {
-      method: 'PATCH',
+    return fetch(apiUrl, {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(contact)
+      body: JSON.stringify({
+        query: query,
+        variables: {
+          contact: contact
+        }
+      })
     })
       .then(response => response.json())
       .then(json => dispatch(updateContact(json)))
   }
 }
 
-export const deleteContact = (id: any) => {
+export const deleteContact = (id: string) => {
+  let query = `mutation deleteContact($id: String) {
+    deleteContact(id: $id) {
+      id,
+      name,
+      email
+    }
+  }`;
   return (dispatch: any) => {
     dispatch({
       type: ContactsTypes.deleteContacts
     })
-    return fetch(apiUrl + 'contact', {
-      method: 'DELETE',
+    return fetch(apiUrl, {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        _id: id
+        query: query,
+        variables: {
+          id: id
+        }
       })
     })
       .then(response => response.json())
