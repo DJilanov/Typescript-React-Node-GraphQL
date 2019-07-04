@@ -17,7 +17,7 @@ describe('Contacts actions', () => {
   it('setContacts should create SET_CONTACTS action', () => {
     expect(actions.setContacts(contact)).toEqual({
       type: ContactsTypes.setContacts,
-      contact: contact
+      contacts: contact
     })
   })
   // it('createContact should create CREATE_CONTACT action', () => {

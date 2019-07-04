@@ -11,37 +11,37 @@ describe('Contacts reducer', () => {
   it('should handle initial state', () => {
     expect(
       ContactsReducer(undefined, {})
-    ).toEqual({})
+    ).toEqual([])
   })
 
   it('should handle FETCH_CONTACTS', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.fetchContacts
       })
-    ).toEqual({})
+    ).toEqual([])
   })
 
   it('should handle SET_CONTACTS', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.setContacts,
-        contact: contacts[0]
+        contacts: contacts
       })
     ).toEqual(contacts)
   })
 
   it('should handle CREATE_CONTACT', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.deleteContacts
       })
-    ).toEqual({})
+    ).toEqual([])
   })
 
   it('should handle ADD_CONTACT', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.addContacts,
         contact: contacts[0]
       })
@@ -50,27 +50,27 @@ describe('Contacts reducer', () => {
 
   it('should handle EDIT_CONTACT', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.editContacts
       })
-    ).toEqual({})
+    ).toEqual([])
   })
 
   it('should handle UPDATE_CONTACT', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer(contacts, {
         type: ContactsTypes.updateContacts,
-        contact: contacts[0]
+        contact: Object.assign({id: 'test2'}, contacts[0])
       })
-    ).toEqual(contacts)
+    ).toEqual([Object.assign({id: 'test2'}, contacts[0])])
   })
 
   it('should handle DELETE_CONTACT', () => {
     expect(
-      ContactsReducer({}, {
+      ContactsReducer([], {
         type: ContactsTypes.deleteContacts,
         contact: contacts[0]
       })
-    ).toEqual(contacts)
+    ).toEqual([])
   })
 })
