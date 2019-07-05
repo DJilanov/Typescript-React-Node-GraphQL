@@ -4,17 +4,26 @@ import { shallow, configure } from "enzyme";
 import configureMockStore from "redux-mock-store";
 import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from "react-redux";
-import Create from './Create';
+import Edit from './Edit';
 
 const mockStore = configureMockStore();
-const store = mockStore({});
-const classes = {};
 const contacts = [{
   id: '1',
   name: 'test',
   email: 'test@abv.bg'
 }];
-const createContact = () => {}
+const store = mockStore({
+  contacts: contacts
+});
+const classes = {};
+const createContact = () => {
+  return {}
+}
+const match = {
+  params: {
+    id: '1'
+  }
+}
 
 configure({ adapter: new Adapter() })
 
@@ -22,28 +31,18 @@ it('renders without crashing', () => {
   expect(
     shallow(
       <Provider store={store}>
-        <Create history={createContact} createContact={createContact} classes={classes}></Create>
+        <Edit fetchContacts={createContact} match={match} classes={classes} history={createContact} editContact={createContact} contact={contacts[0]}></Edit>
       </Provider>
-    ).exists(<th>ID</th>)
-  ).toBe(true);
+    ).html().indexOf('>Submit</span>')
+  ).toBeGreaterThan(0);
 });
 
-it('Pupulates with correct amount of rows', () => {
+it('Pupulates with correct fields', () => {
   expect(
     shallow(
       <Provider store={store}>
-        <Create contacts={contacts} deleteUser={deleteUser} classes={classes}></Create>
+        <Edit fetchContacts={createContact} match={match} classes={classes} history={createContact} editContact={createContact} contact={contacts[0]}></Edit>
       </Provider>
-    ).exists(<th>ID</th>)
-  ).toBe(true);
-});
-
-it('Pupulates with correct data', () => {
-  expect(
-    shallow(
-      <Provider store={store}>
-        <Create contacts={contacts} deleteUser={deleteUser} classes={classes}></Create>
-      </Provider>
-    ).exists(<th>ID</th>)
-  ).toBe(true);
+    ).html().indexOf('value="test@abv.bg"/>')
+  ).toBeGreaterThan(0);
 });
